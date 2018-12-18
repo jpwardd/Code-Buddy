@@ -5,13 +5,16 @@
   "license": "MIT",
   "scripts": {
     "start": "NODE_ENV=production node -r esm .",
-    "dev": "eval $(cat .env) nodemon -r esm"
+    "dev": "nodemon -r esm"
   },
   "dependencies": {
     "apollo-server-express": "^2.2.6",
     "bcryptjs": "^2.4.3",
+    "connect-mongo": "^2.0.3",
+    "dotenv": "^6.2.0",
     "esm": "^3.0.84",
     "express": "^4.16.4",
+    "express-session": "^1.15.6",
     "graphql": "^14.0.2",
     "joi": "^14.3.0",
     "mongoose": "^5.3.16",

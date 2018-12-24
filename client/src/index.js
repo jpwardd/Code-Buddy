@@ -2,15 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-
+import { Grommet } from 'grommet'
 import { ApolloProvider } from 'react-apollo'
 import { ApolloClient } from 'apollo-client'
 import { createHttpLink } from 'apollo-link-http'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import { BrowserRouter } from 'react-router-dom'
 
+
 const httpLink = createHttpLink({
-  uri: 'http://localhost:4000/graphql'
+  uri: 'http://localhost:4000/graphql',
+  credentials: 'same-origin'
 })
 
 const client = new ApolloClient({
@@ -18,11 +20,24 @@ const client = new ApolloClient({
   cache: new InMemoryCache()
 })
 
+const theme = {
+  global: {
+    font: {
+      family: 'Roboto',
+      size: '14px',
+      height: '20px',
+    },
+  },
+};
+
+
 ReactDOM.render(
 <ApolloProvider client={client}>
-<BrowserRouter>
-  <App /> 
-</BrowserRouter>
+  <BrowserRouter>
+    <Grommet theme={theme}>
+      <App /> 
+    </Grommet>
+  </BrowserRouter>
 </ApolloProvider>,
 document.getElementById('root'));
  

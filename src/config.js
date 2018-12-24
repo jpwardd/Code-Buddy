@@ -14,7 +14,11 @@ export const {
 
   SESS_NAME,
   SESS_SECRET,
-  SESS_LIFETIME = 1000 * 60 * 60 * 2
+  SESS_LIFETIME = 1000 * 60 * 60 * 2,
+
+  REDIS_HOST,
+  REDIS_PORT,
+  REDIS_PASSWORD
 
 } = process.env
 

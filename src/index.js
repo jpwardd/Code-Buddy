@@ -9,6 +9,7 @@ import {
   APP_PORT, IN_PROD, DB_USERNAME, DB_PASSWORD, DB_HOST, DB_PORT, DB_NAME,
   SESS_NAME, SESS_SECRET, SESS_LIFETIME
 } from './config'
+import cors from 'cors'
 
 (async () => {
   try {
@@ -27,6 +28,14 @@ import {
       mongooseConnection: mongoose.connection
     })
     
+    // enable cors
+    var corsOptions = {
+      origin: 'http://localhost:3000',
+      credentials: true 
+    };
+
+    app.use(cors(corsOptions));
+
     app.use(session({
       store,
       name: SESS_NAME,
@@ -43,11 +52,8 @@ import {
     const server = new ApolloServer({
       typeDefs,
       resolvers,
-      cors: false,
       playground: IN_PROD ? false : {
-        settings: {
-          'request.credentials': 'include'
-        }
+       
       },
       context: ({ req, res }) => ({ req, res })
     })

@@ -5,14 +5,13 @@ import { Box, Button, FormField, TextInput } from 'grommet';
 
 
 const SIGNIN_MUTATION = gql `
-  mutation signIn($email: String!, $password: String!) {
+  mutation SignInMutation($email: String!, $password: String!){
     signIn(email: $email, password: $password) {
-     email
      id
+     email
     }
   }
 `
-
 
 
 class Login extends Component {
@@ -30,9 +29,15 @@ class Login extends Component {
   render() {
   
     const { email, password } = this.state
-    console.log(email)
-    console.log(password)
     return (
+        <Mutation
+          mutation={SIGNIN_MUTATION}
+          variables={{ email, password }}
+          onCompleted={() => this.props.history.push('/')}
+        >
+      {mutation => (
+      <div>
+
       <form>
         <Box>
         <FormField label='email'>
@@ -53,21 +58,17 @@ class Login extends Component {
           />
         </FormField>
         <div>
-        <Mutation
-          mutation={SIGNIN_MUTATION}
-          variables={{ email, password }}
-        >
-          {mutation => (
           <div>
           
             {<Button onClick={mutation}>Login</Button>}
           </div>
-          )}
-        </Mutation>
         </div>
       
         </Box>
       </form>
+      </div>
+      )}
+    </Mutation>
     )
   }
 }

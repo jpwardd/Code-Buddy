@@ -20,7 +20,7 @@ export default {
     },
     user: (root, { id }, { req }, info) => {
 
-      // Auth.checkSignedIn(req)
+      Auth.checkSignedIn(req)
 
       if (!mongoose.Types.ObjectId.isValid(id)) {
         throw new UserInputError(`${id} is not a valid user ID.`)
@@ -33,7 +33,7 @@ export default {
     signUp: async (root, args, { req }, info) => {
      
 
-      //Auth.checkSignedOut(req)
+      Auth.checkSignedOut(req)
 
       await Joi.validate(args, signUp, { abortEarly: false })
 
@@ -45,7 +45,7 @@ export default {
     },
     signIn: async (root, args, { req }, info) => {
       const { userId } = req.session
-
+      
       if (userId) {
         return User.findById(userId)
       }
@@ -59,7 +59,7 @@ export default {
       return user
     },
     signOut: (root, args, { req, res }, info) => {
-      // Auth.checkSignedIn(req)
+      Auth.checkSignedIn(req)
 
       return Auth.signOut(req, res)
     }

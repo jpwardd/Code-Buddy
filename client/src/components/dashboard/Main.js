@@ -2,7 +2,12 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 
 const MainWrapper = styled.div `
-  background-color: red;
+  margin-top: 10px;
+  padding: 8px;
+  background-color: #EEF2F5;
+  border-radius: 8px;
+  color: grey;
+  height: 100%;
 `
 
 class Main extends Component{

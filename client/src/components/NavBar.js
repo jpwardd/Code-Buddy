@@ -12,7 +12,8 @@ const SIGNOUT_MUTATION = gql`
 
 `
 const Nav = styled.nav`
-  border-bottom: 4px solid #B14AED;
+  
+  background: white;
   height: 70px;
   font-family: Roboto;
   font-size: 14px;
@@ -23,7 +24,7 @@ const Nav = styled.nav`
     text-decoration: none;
     font-weight: bold;
     font-size: 18px;
-    color: black;
+    color: #364E5C;
   }
   div {
     float: right;
@@ -34,13 +35,11 @@ const LogoutButton = styled.button`
   padding: 8px;
   font-weight: bold;
   font-size: 20px;
-  color: #FFFFFF;
-  background-color: #B14AED;
+  color: #21D581;
+  background-color: white;
   border-radius: 4px;
   display: inline-flex;
-  border: 1px solid black;
-  
-
+  border: 2px solid #0D2E42;
 `
 
 class NavBar extends Component{

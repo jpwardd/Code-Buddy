@@ -9,7 +9,7 @@ export default {
   Query: {
     me: (root, args, { req }, info) => {
       // Auth.checkSignedIn(req)
-
+      console.log(req.session.userId)
       return User.findById(req.session.userId)
     },
     users: (root, args, { req }, info) => {
